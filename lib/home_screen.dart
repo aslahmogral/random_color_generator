@@ -32,11 +32,13 @@ class HomeScreen extends StatelessWidget {
             onTap: () {
               assignColorMethod();
             },
-            child: ColoredBox(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
               color: Colors.primaries[generatedColor],
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: DimensFile.paddingLarge,),
+                    horizontal: DimensFile.paddingLarge,
+                    vertical: DimensFile.paddingLarge,),
                 child: DecoratedBox(
                   decoration: const BoxDecoration(
                     color: Colors.black,
