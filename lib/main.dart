@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:random_color_generator/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Main());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+///Main
+class Main extends StatelessWidget {
+  ///constructor of Main
+  const Main({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,8 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
-

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:random_color_generator/utils/Dimens.dart';
+import 'package:random_color_generator/utils/dimens_file.dart';
 import 'package:random_color_generator/utils/random_color_generator.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+///HomeScreen
+class HomeScreen extends StatelessWidget {
+  ///constructor of Homescreen
   final ValueNotifier<int> _generateColorNotifier = ValueNotifier(12);
+  ///constructor of homescreen
+   HomeScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +17,14 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.black,
         centerTitle: true,
         title: ValueListenableBuilder<int>(
-            valueListenable: _generateColorNotifier,
-            builder: (context, generatedColor, child) {
-              return Text(
-                'Random Color Generator',
-                style: TextStyle(color: Colors.primaries[generatedColor]),
-              );
-            }),
+          valueListenable: _generateColorNotifier,
+          builder: (context, generatedColor, child) {
+            return Text(
+              'Random Color Generator',
+              style: TextStyle(color: Colors.primaries[generatedColor]),
+            );
+          },
+        ),
       ),
       body: ValueListenableBuilder<int>(
         builder: (context, generatedColor, child) {
@@ -33,18 +32,24 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               assignColorMethod();
             },
-            child: Container(
+            child: ColoredBox(
               color: Colors.primaries[generatedColor],
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingLg),
-                child: Container(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: DimensFile.paddingLarge,),
+                child: DecoratedBox(
                   decoration: const BoxDecoration(
-                      color: Colors.black, shape: BoxShape.circle),
+                    color: Colors.black,
+                    shape: BoxShape.circle,
+                  ),
                   child: Center(
-                    child: Text('Hey There',
-                        style: TextStyle(
-                            fontSize: Dimens.fontLg,
-                            color: Colors.primaries[generatedColor])),
+                    child: Text(
+                      'Hey There',
+                      style: TextStyle(
+                        fontSize: DimensFile.fontLarge,
+                        color: Colors.primaries[generatedColor],
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -55,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
+ ///gets random color
   void assignColorMethod() {
     _generateColorNotifier.value = RandomColorGenerator().generatedColor;
   }
