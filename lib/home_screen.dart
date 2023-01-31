@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_color_generator/utils/Dimens.dart';
 import 'package:random_color_generator/utils/random_color_generator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final ValueNotifier<int> _generateColorNotifier = ValueNotifier(0);
+  final ValueNotifier<int> _generateColorNotifier = ValueNotifier(12);
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +32,19 @@ class _HomeScreenState extends State<HomeScreen> {
           return InkWell(
             onTap: () {
               assignColorMethod();
-              
             },
             child: Container(
               color: Colors.primaries[generatedColor],
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 48),
+                padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingLg),
                 child: Container(
                   decoration: const BoxDecoration(
                       color: Colors.black, shape: BoxShape.circle),
                   child: Center(
                     child: Text('Hey There',
-                        style:
-                            TextStyle(color: Colors.primaries[generatedColor])),
+                        style: TextStyle(
+                            fontSize: Dimens.fontLg,
+                            color: Colors.primaries[generatedColor])),
                   ),
                 ),
               ),
